@@ -11,7 +11,8 @@ class Singe : public Animal{
         bool enclosAvecHerbe;
     public:
         Singe(std::string nom, double poids, bool enclosAvecHerbe);
-        double calculerDiete();
+        void calculerDiete();
+        void informationsAnimal();
 };
 
 #endif
