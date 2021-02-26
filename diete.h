@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-
 class Diete{
     
     private:
@@ -19,10 +18,6 @@ class Diete{
         double getViande();
         double getFruits();
         double getHerbe();
-
-        ~Diete(){
-    std::cout << "Diete detruit" << std::endl;}
-
 };
 
 #endif

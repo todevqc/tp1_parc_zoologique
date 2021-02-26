@@ -11,9 +11,6 @@ class Tigre : public Animal{
         Tigre(std::string nom, double poids);
         void calculerDiete();
         void informationsAnimal();
-        ~Tigre(){
-            std::cout << "Tigre detruit" << std::endl;
-        };
 };
 
 #endif

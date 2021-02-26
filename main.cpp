@@ -4,69 +4,68 @@
 #include "tigre.h"
 #include "singe.h"
 #include "rhinoceros.h"
-#include "diete.h"
+//#include "diete.h"
 
 int menuZoo();
 Animal* ajouterTigre(int& numero);
 Animal* ajouterSinge(int& numero);
 Animal* ajouterRhinoceros(int& numero);
-void compteRenduParc(Animal* unAnimal[], int& numero);
+void compteRenduParc(Animal* unAnimal[], int& nombreAnimeaux);
+
+//// BONUS SUPP
+void supprimerAnimal(Animal* unAnimal[], int& nombreAnimeaux);
+int animalExiste(std::string nomAnimal, Animal* unAnimal[], int& nombreAnimeaux);
+void supprimer(int position, Animal* unAnimal[], int& nombreAnimeaux);
 
 int main() {
     
-    // je laisse l'utilisateur quitter le logiciel si il choisi 5, dans le menu et uniquement a ce moment la 
+    // quitter le logiciel si choix = 6, uniquement 
     bool quitterLogiciel = false;
 
     Animal* animeaux[250];
     int nbr_Animeaux_Parc = 0;
 
-
-    animeaux[nbr_Animeaux_Parc] = new Tigre("Alice", 120.8);
-    nbr_Animeaux_Parc++;
-
-    std::cout << "------------------------------------------" << std::endl;
-
-    animeaux[nbr_Animeaux_Parc] = new Singe("Bob", 10.5, true);
-    nbr_Animeaux_Parc++;
-
-    std::cout << "------------------------------------------" << std::endl;
-
-    animeaux[nbr_Animeaux_Parc] = new Singe("Monke", 8.7, false);
-    nbr_Animeaux_Parc++;
-
-    std::cout << "------------------------------------------" << std::endl;
-
-    animeaux[nbr_Animeaux_Parc] = new Rhinoceros("Eve", 1812.3, 1000);
-    nbr_Animeaux_Parc++;
-
-    std::cout << "------------------------------------------" << std::endl;
-
-    animeaux[nbr_Animeaux_Parc] = new Rhinoceros("Horny", 2021.5, 6000);
-    nbr_Animeaux_Parc++;
-
-    std::cout << "------------------------------------------" << std::endl;
-
-
     do{
     switch (menuZoo()) {
         case 1:
-            animeaux[nbr_Animeaux_Parc] = ajouterTigre(nbr_Animeaux_Parc);
+            // verification de disponibilité de place dans le Zoo avant Ajout
+            if (nbr_Animeaux_Parc>=250){
+                std::cout << "\n ----  ZOOTOPIA  Presentement affiche complet !!  ----" << std::endl;
+                std::cout << " Vous ne pouvez pas ajouter d'animal pour le moment !!!" << std::endl;
+            }else{
+                animeaux[nbr_Animeaux_Parc] = ajouterTigre(nbr_Animeaux_Parc);
+            }
             break;
         case 2:
-            animeaux[nbr_Animeaux_Parc] = ajouterSinge(nbr_Animeaux_Parc);
+            // verification de disponibilité de place dans le Zoo avant Ajout
+            if (nbr_Animeaux_Parc>=250){
+                std::cout << "\n ----  ZOOTOPIA  Presentement affiche complet !!  ----" << std::endl;
+                std::cout << " Vous ne pouvez pas ajouter d'animal pour le moment !!!" << std::endl;
+            }else{
+                animeaux[nbr_Animeaux_Parc] = ajouterSinge(nbr_Animeaux_Parc);
+            }
             break;
         case 3:
-            animeaux[nbr_Animeaux_Parc] = ajouterRhinoceros(nbr_Animeaux_Parc);
+            // verification de disponibilité de place dans le Zoo avant Ajout
+            if (nbr_Animeaux_Parc>=250){
+                std::cout << "\n ----  ZOOTOPIA  Presentement affiche complet !!  ----" << std::endl;
+                std::cout << " Vous ne pouvez pas ajouter d'animal pour le moment !!!" << std::endl;
+            }else{
+                animeaux[nbr_Animeaux_Parc] = ajouterRhinoceros(nbr_Animeaux_Parc);
+            }
             break;
         case 4:
             compteRenduParc(animeaux, nbr_Animeaux_Parc);
             break;
         case 5:
-            std::cout << "Quitter !!" << std::endl;
+            supprimerAnimal(animeaux, nbr_Animeaux_Parc);
+            break;
+        case 6:
+            std::cout << "\n  ***  Quitter !!  ***\n" << std::endl;
             quitterLogiciel = true;
-            break;    
+            break;
         default:
-            std::cout << "Erreur de saisie !!!\n veuillez saisir une option de menu valide !!" << std::endl;
+            std::cout << "Erreur de saisie !!!\n veuillez choisir une option valide du menu !!" << std::endl;
             break;
         }
     } while (!quitterLogiciel);
@@ -82,7 +81,8 @@ int menuZoo(){
     std::cout << " 2 - Ajouter un singe" << std::endl;
     std::cout << " 3 - Ajouter un rhinocéros" << std::endl;
     std::cout << " 4 - Afficher le compte-rendu du parc" << std::endl;
-    std::cout << " 5 - Quitter" << std::endl;
+    std::cout << " 5 - Supprimer animal" << std::endl;
+    std::cout << " 6 - Quitter" << std::endl;
     std::cout << "\n    Entrez votre choix :";
 
     int choix;
@@ -117,6 +117,8 @@ Animal* ajouterSinge(int& numero){
     std::cin >> poids;
 
     std::cout << " L'enclos du singe a-il de l'herbe ? : ";
+    //  je concidere que 1 = oui (True)
+    //  tout autres chiffre = Non (False)
     std::cout << "\n 1 - Oui.";
     std::cout << "\n 2 - Non.";
     std::cout << "\n Votre choix : ";
@@ -148,7 +150,7 @@ Animal* ajouterRhinoceros(int& numero){
 }
 
 
-void compteRenduParc(Animal* unAnimal[], int& numero){
+void compteRenduParc(Animal* unAnimal[], int& nombreAnimeaux){
     std::cout << "\n  -----------------------------------" << std::endl;
     std::cout << "   - Compte rendu du Parc Zootopia - " << std::endl;
     std::cout << "  -----------------------------------" << std::endl;
@@ -157,8 +159,11 @@ void compteRenduParc(Animal* unAnimal[], int& numero){
     double fruits = 0;
     double herbe = 0;
 
-    for (int i = 0; i < numero; i++) {
+    std::cout << "nombreAnimeaux : " << nombreAnimeaux << std::endl;
+    for (int i = 0; i < nombreAnimeaux; i++) {
+        
         std::cout << "\n  -----------------------------------" << std::endl;
+        std::cout << "i : " << i << std::endl;
         unAnimal[i]->informationsAnimal();
         unAnimal[i]->afficherDiete();
         viande += unAnimal[i]->getDieteJour()->getViande();
@@ -170,4 +175,44 @@ void compteRenduParc(Animal* unAnimal[], int& numero){
     std::cout << "Viande : " << viande << " kg" << std::endl;
     std::cout << "Fruits : " << fruits << " kg" <<  std::endl;
     std::cout << "Herbe  : " << herbe << " kg" <<  std::endl;
+}
+
+void supprimerAnimal(Animal* unAnimal[], int& nombreAnimeaux){
+    std::cout << "\n  ----------------------" << std::endl;
+    std::cout << "   - Supprimer Animal - " << std::endl;
+    std::cout << "  ----------------------" << std::endl;
+    std::cout << " Nom de l'animal à supprimer : ";
+    std::string nomAnimal; 
+    std::cin >> nomAnimal;
+    
+    //  retourne la position, si inexistant retourne nombreAnimeaux
+    int positionAnimal = animalExiste(nomAnimal, unAnimal, nombreAnimeaux);
+    
+    if (positionAnimal!=nombreAnimeaux) {
+        supprimer(positionAnimal, unAnimal, nombreAnimeaux);
+        std::cout << " * Succés de la suppression de l'animal * ";
+    }else{
+        std::cout << " ERREUR !!! \n L'animal que vous tentez de supprimer n'existe pas ! ";
+    }
+}
+
+int animalExiste(std::string nomAnimal, Animal* unAnimal[], int& nombreAnimeaux){
+    for (int i = 0; i < nombreAnimeaux; i++){
+        if (unAnimal[i]->getNom()==nomAnimal) {
+            return i;
+        }
+    }
+    return nombreAnimeaux;
+}
+
+void supprimer(int position, Animal* unAnimal[], int& nombreAnimeaux){
+    // liberation de la case memoire de l'animal a supprimer
+    delete unAnimal[position];
+    for (int i = position; i < (nombreAnimeaux-1); i++){
+        unAnimal[i]=unAnimal[i+1];
+    }    
+    //  juste une securité pour ne pas avoir 2 pointeur qui pointent la meme case memoire
+    //  meme si il n'y aura pas accés
+    unAnimal[nombreAnimeaux-1] = NULL;
+    nombreAnimeaux --;
 }

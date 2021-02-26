@@ -10,10 +10,8 @@ Rhinoceros::Rhinoceros(std::string sonNom, double sonPoids, int superficie) : An
 }
 
 void Rhinoceros::calculerDiete(){
-    
     double fruits = (this->poids*0.5)/100;
     double herbe = 0;
-
     //calcule si besoin d'un supplement ou pas d'herbe
     double herbeDisponible = (this->superficieEspace*10)/1000;
     //calcule de l'apport quotidient en herbe de l'enclos 
@@ -22,9 +20,7 @@ void Rhinoceros::calculerDiete(){
         double supplementHerbe = 2 - apportQuotidienEnclos;
         herbe = (this->poids*supplementHerbe)/100;
     }
-
     this->dieteJour->dieteAnimal(0, fruits, herbe);
-
 }
 
 void Rhinoceros::informationsAnimal(){    
