@@ -9,7 +9,7 @@
 class Tigre : public Animal{
     public:
         Tigre(std::string nom, double poids);
-        void calculerDiete();
+        Diete* calculerDiete();
         void informationsAnimal();
 };
 

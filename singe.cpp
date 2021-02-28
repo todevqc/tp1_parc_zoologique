@@ -4,15 +4,15 @@ Singe::Singe(std::string nom, double poids, bool enclosAvecHerbe) : Animal (nom,
     this->enclosAvecHerbe = enclosAvecHerbe;
     this->calculerDiete();
 }
-
-void Singe::calculerDiete(){
+//  calcule de la diete du singe
+Diete* Singe::calculerDiete(){
     double viande = (this->poids*1)/100;
     double fruits = (this->poids*1)/100;
     double herbe = 0;
     if (!this->enclosAvecHerbe){
         herbe = (this->poids*0.5)/100;
     }
-    this->dieteJour->dieteAnimal(viande, fruits, herbe);
+    return new Diete(viande, fruits, herbe);
 }
 
 void Singe::informationsAnimal(){    

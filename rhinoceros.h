@@ -11,7 +11,7 @@ class Rhinoceros : public Animal{
         int superficieEspace;
     public:
         Rhinoceros(std::string sonNom, double sonPoids, int superficie);
-        void calculerDiete();
+        Diete* calculerDiete();
         void informationsAnimal();
 };
 

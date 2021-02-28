@@ -165,8 +165,12 @@ void compteRenduParc(Animal* unAnimal[], int& nombreAnimaux){
     std::cout << "\n  Presentement nous avons " << nombreAnimaux << " residents." << std::endl;
 
     for (int i = 0; i < nombreAnimaux; i++) {
+        //   calcule de la diete (methode polymorphique) de chaque animal
+        unAnimal[i]->setDieteJour(unAnimal[i]->calculerDiete());
+        //  Affichage des information de chaque animal ainsi que sa diète
         unAnimal[i]->informationsAnimal();
         unAnimal[i]->afficherDiete();
+        //  calcule de l'ensemble des diètes pour le total des besoins en nourriture du zoo
         viande += unAnimal[i]->getDieteJour()->getViande();
         fruits += unAnimal[i]->getDieteJour()->getFruits();
         herbe += unAnimal[i]->getDieteJour()->getHerbe();
@@ -201,20 +205,20 @@ void supprimerAnimal(Animal* unAnimal[], int& nombreAnimaux){
         std::string nomAnimal; 
         std::cin >> nomAnimal;
         
-        //  retourne la position, si inexistant retourne nombreAnimaux
+        //  retourne la position, si inexistant retourne -1
         int positionAnimal = animalExiste(nomAnimal, unAnimal, nombreAnimaux);
         
         if (positionAnimal>=0) {
             supprimer(positionAnimal, unAnimal, nombreAnimaux);
             std::cout << "\n *************************************** ";
-            std::cout << " * Succés de la suppression de l'animal * \n";
+            std::cout << "\n * Succés de la suppression de l'animal * \n";
         }else{
             std::cout << "\n *************************************** ";
-            std::cout << " ERREUR !!! \n L'animal que vous tentez de supprimer n'existe pas ! \n";
+            std::cout << "\n ERREUR !!! \n L'animal que vous tentez de supprimer n'existe pas ! \n";
         }
     }else{
         std::cout << "\n *************************************** ";
-        std::cout << " ERREUR !!! \n Il n'y a aucun animal à supprimer dans le Zoo ! \n";
+        std::cout << "\n ERREUR !!! \n Il n'y a aucun animal à supprimer dans le Zoo ! \n";
     }
 }
 /**

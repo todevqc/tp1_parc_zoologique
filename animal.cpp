@@ -7,7 +7,6 @@
 Animal::Animal(std::string le_nom, double le_poids){
     this->nom = le_nom;
     this->poids = le_poids;
-    this->dieteJour = new Diete();
 }
 /**
  * Affichage de la diète (Viande - Fruits - Herbe)
@@ -16,6 +15,12 @@ void Animal::afficherDiete(){
     std::cout << "  Mange " << this->dieteJour->getViande() << " kg de viande par jour" << std::endl;
     std::cout << "  Mange " << this->dieteJour->getFruits() << " kg de fruits par jour" << std::endl;
     std::cout << "  Mange " << this->dieteJour->getHerbe() << " kg d'herbe par jour" << std::endl;
+}
+/**
+ * @return Pointeur sur un objet Diete associé a l'animal
+*/
+void Animal::setDieteJour(Diete* laDiete){
+    this->dieteJour = laDiete;
 }
 /**
  * @return Pointeur sur un objet Diete associé a l'animal

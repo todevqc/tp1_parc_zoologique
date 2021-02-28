@@ -1,12 +1,6 @@
 #include "diete.h"
 
-Diete::Diete(){
-    this->viande = 0;
-    this->fruits = 0;
-    this->herbe = 0;
-}
-
-void Diete::dieteAnimal(double besoinsViande, double besoinsFruits, double besoinsHerbe){
+Diete::Diete(double besoinsViande, double besoinsFruits, double besoinsHerbe){
     this->viande = besoinsViande;
     this->fruits = besoinsFruits;
     this->herbe = besoinsHerbe;

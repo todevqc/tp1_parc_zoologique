@@ -12,9 +12,7 @@ class Diete{
         double herbe;
         
     public:
-        Diete();
-        void dieteAnimal(double besoinsViande, double besoinsFruits, double besoinsHerbe);
-
+        Diete(double besoinsViande, double besoinsFruits, double besoinsHerbe);
         double getViande();
         double getFruits();
         double getHerbe();

@@ -1,18 +1,17 @@
 #include "tigre.h"
 /**
- * Constructeur d'initialisation d'un tigre, avec calcule de sa diète
+ * Constructeur d'initialisation d'un tigre
  * @param nom represente le nom du tigre
  * @param poids represente le poids du tigre
 */
 Tigre::Tigre(std::string nom, double poids) : Animal(nom, poids){
-    this->calculerDiete();
 }
 /**
- * calcule la diète d'un tigre et enregistre les données
+ * calcule la diète d'un tigre et retourne un pointeur vers un objet Diete associer
 */
-void Tigre::calculerDiete(){
+Diete* Tigre::calculerDiete(){
     double viande = (this->poids*5)/100;
-    this->dieteJour->dieteAnimal(viande, 0, 0);
+    return new Diete(viande, 0, 0);
 }
 
 void Tigre::informationsAnimal(){    
