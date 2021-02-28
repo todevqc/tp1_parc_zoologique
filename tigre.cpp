@@ -16,5 +16,5 @@ void Tigre::calculerDiete(){
 }
 
 void Tigre::informationsAnimal(){    
-    std::cout << "Tigre : " << this->nom << " (" << this->poids << " kg)" << std::endl;    
+    std::cout << "\nTigre : " << this->nom << " (" << this->poids << " kg)" << std::endl;    
 }

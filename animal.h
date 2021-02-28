@@ -15,7 +15,7 @@ class Animal{
         Animal(std::string le_nom, double le_poids);
         //  destructeur virtuel qui appel un delete sur l'objet Diete qui lui est associer
         virtual ~Animal();
-        //  calcule la diète personnalisé et stock les données dans les variable qui correspondes
+        //  va calculer la diète personnalisé et stock les données dans les variable qui correspondes
         virtual void calculerDiete() = 0;
         //  affichage de la diete d'un animal
         void afficherDiete();

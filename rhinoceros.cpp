@@ -24,6 +24,6 @@ void Rhinoceros::calculerDiete(){
 }
 
 void Rhinoceros::informationsAnimal(){    
-    std::cout << "Rhinoceros : " << this->nom << " (" << this->poids << " kg)" << std::endl;
+    std::cout << "\nRhinoceros : " << this->nom << " (" << this->poids << " kg)" << std::endl;
     std::cout << "  Enclos de " << this->superficieEspace << " metres-carres" << std::endl; 
 }

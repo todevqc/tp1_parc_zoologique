@@ -16,7 +16,7 @@ void Singe::calculerDiete(){
 }
 
 void Singe::informationsAnimal(){    
-    std::cout << "Singe : " << this->nom << " (" << this->poids << " kg)" << std::endl;
+    std::cout << "\nSinge : " << this->nom << " (" << this->poids << " kg)" << std::endl;
     if (this->enclosAvecHerbe) {
         std::cout << "  Enclos avec herbe" << std::endl;
     }else{
